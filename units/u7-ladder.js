@@ -49,21 +49,21 @@ L.add({
 
   <div class="section">
     <div class="kicker">Lab B · Benchmarks beside the ladder</div>
-    <div class="prose"><p>Two established approaches do part of the same job with numbers attached. Compare them with Fried's proposal.</p></div>
+    <div class="prose"><p>An established process and a proposed modification of physics provide two quantitative benchmarks. Compare them with Fried's proposal.</p></div>
     <div class="two">
       <div class="case">
         <h3>${L.tag('est')} Decoherence</h3>
-        <p class="small">When a quantum system interacts with its surroundings, the surroundings record which possibility occurred, and interference fades. In a simple dephasing model the fringe visibility falls as V = e<sup>−Γt</sup>.</p>
+        <p class="small">When a quantum system interacts with its surroundings, different alternatives become correlated with distinguishable environmental states, and local interference fades. In a simple dephasing model the fringe visibility falls as V = e<sup>−Γt</sup>.</p>
         ${L.slider('gt','Coupling × time, Γt',0,6,0.01,0.5)}
         <canvas class="plot" id="decoh" style="height:180px" aria-label="Visibility against coupling times time"></canvas>
         <p class="small">This is standard physics doing something like Fried's <i>suppression</i>. It does not, on its own, pick which outcome occurs.</p>
       </div>
       <div class="case">
         <h3>${L.tag('interp','Proposal · GRW, not Fried')} Spontaneous collapse</h3>
-        <p class="small">Ghirardi, Rimini and Weber (1986) add spontaneous localization: each particle collapses at a rate λ ≈ 10⁻¹⁶ per second, and a bound object of N particles collapses about N times as fast.</p>
+        <p class="small">Ghirardi, Rimini and Weber (1986) add spontaneous localization: each particle collapses at a rate λ ≈ 10⁻¹⁶ per second, with a traditional localization length of about 10⁻⁷ m. The total hit rate for N constituents is Nλ; effective suppression also depends on branch separation and geometry.</p>
         ${L.slider('logN','Number of bound particles, 10^k',0,25,0.5,0)}
         <dl class="readout" id="grwRead"></dl>
-        <p class="small">This is a fully specified version of “actualization from within,” and experiments are testing it; an underground experiment at Gran Sasso (2021) ruled out the simplest gravity-based variant.</p>
+        <p class="small">This is a fully specified version of “actualization from within,” and experiments are testing it; tests constrain particular collapse models. A gravity-related Diósi–Penrose model tested at Gran Sasso is distinct from GRW; a result about one model does not rule out the whole family.</p>
       </div>
     </div>
     <div class="case">

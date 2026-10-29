@@ -17,7 +17,7 @@ L.add({
   <div class="case"><h3>Fried's case, step by step</h3>
     <ol class="steps">
       <li>${L.tag('est')} A proof moves from axioms through fixed laws of inference, one symbolic configuration at a time, exactly as physical law moves atoms. Logical knowledge is “constructed mechanically” (p. 167).</li>
-      <li>${L.tag('est')} Gödel (1931) showed that in a consistent formal system strong enough for arithmetic there is a sentence G, saying in effect “there is no proof of G,” that the system cannot prove (pp. 170–175).</li>
+      <li>${L.tag('est')} Gödel (1931) showed that in a consistent, effectively axiomatized formal system strong enough for arithmetic there is a sentence G, saying in effect “there is no proof of G,” that the system cannot prove (pp. 170–175).</li>
       <li>${L.tag('interp')} We can still see that G is true, by reasoning about what it means. So truth can outrun proof, and “its truth must emerge via a non-mechanistic process” (pp. 186–187).</li>
       <li>${L.tag('interp')} Talk of fluids, organs or connecting rods is “meta-science,” talk about atoms. A machine, whose parts get their roles from the whole, is self-referential, and so is “the meta-scientific equivalent of Gödel sentences” (p. 184).</li>
       <li>${L.tag('interp')} Nothing in the formal system accounts for G's existence: “G should not exist. But it does” (p. 189). G exists because Gödel created it, through “Creativity and Design.” Likewise machines exist because living designers made them.</li>

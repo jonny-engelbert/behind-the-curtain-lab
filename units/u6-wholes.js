@@ -60,7 +60,7 @@ L.add({
   <div class="case"><h3>Probe</h3>
     ${L.claim('est','No local strategy, however clever, wins more than 75% of the time; entangled pairs reach about 85.4%. Experiments confirm the quantum value. Yet Alice\'s answers alone are always 50:50 whatever Bob does, so entanglement cannot be used to send a message.')}
     ${L.claim('interp','What the violation means is disputed. Fried reads it as one object rather than two. Others read it as nonlocal correlation between two objects (Bohmian mechanics), or as branching without any instantaneous influence (many-worlds).')}
-    ${L.claim('open','<b>Kind of gap: definition.</b> Entanglement is measured here, by S. Fried\'s stronger claim, that merged parts lose their identities and N stops counting, has no matching measure yet. What quantity would show that a system has “merged” in his sense rather than merely being entangled?')}
+    ${L.claim('open','<b>Kind of gap: definition.</b> S tests a Bell correlation bound here; it is not a general measure of the amount of entanglement. Fried\'s stronger claim, that merged parts lose their identities and N stops counting, has no matching measure yet. What quantity would show that a system has “merged” in his sense rather than merely being entangled?')}
   </div>
 
   ${L.check('w1','Why can no classical team beat 75%?',[

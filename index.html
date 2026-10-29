@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Behind the Curtain Lab</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -167,6 +172,9 @@ th{font-weight:600;font-size:.82rem;color:var(--muted)}
 @media (max-width: 560px){ .two,.home-grid{grid-template-columns:minmax(0,1fr)} canvas.plot{height:230px} .case{padding:16px} }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 </style>
+<link rel="stylesheet" href="beginner.css">
+</head>
+<body>
 
 <div class="shell">
   <aside class="rail" aria-label="Course map">
@@ -180,7 +188,7 @@ th{font-weight:600;font-size:.82rem;color:var(--muted)}
       <div>Every claim carries its status:</div>
       <div><span class="claim c-est">Established</span> tested physics or logic</div>
       <div><span class="claim c-interp">Interpretation</span> a reading of established results</div>
-      <div><span class="claim c-prop">Fried's proposal</span> new to this book</div>
+      <div><span class="claim c-prop">Fried's proposal</span> Fried’s proposed addition</div>
       <div><span class="claim c-open">Open question</span> says what is open</div>
     </div>
   </aside>
@@ -252,7 +260,7 @@ window.LAB = (function(){
       draw(ctx, r.width, r.height, { ink: cssVar('--ink'), muted: cssVar('--muted'), grid: cssVar('--plot-grid'), line: cssVar('--plot-line'), c2: cssVar('--plot-2'), c3: cssVar('--plot-3'), good: cssVar('--good'), bad: cssVar('--bad'), panel: cssVar('--panel-2'), font: cssVar('--font-mono') }); }
     const ro = new ResizeObserver(render); ro.observe(el);
     const mq = matchMedia('(prefers-color-scheme: dark)'); mq.addEventListener && mq.addEventListener('change', render);
-    LAB._cleanup.push(() => ro.disconnect());
+    LAB._cleanup.push(() => { ro.disconnect(); mq.removeEventListener && mq.removeEventListener('change', render); });
     render(); return render;
   }
   // axes helper: returns mapping fns
@@ -331,4 +339,6 @@ window.LAB = (function(){
 <script src="units/u7-ladder.js"></script>
 <script src="units/u8-meaning.js"></script>
 <script src="units/u9-synthesis.js"></script>
+<script src="beginner.js"></script>
 <script>LAB.route();</script>
+</body></html>

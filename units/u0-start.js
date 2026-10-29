@@ -10,7 +10,7 @@ L.add({
     <div class="prose">
       <p>Every unit follows the same four moves. <b>Fried's case</b> states his argument in his own terms, with page references. <b>The lab</b> lets you work with a model of the physics he relies on. <b>The probe</b> asks what the lab does and does not establish. <b>Checks and notebook</b> close the unit: short questions with explanations, and a place to write your own view.</p>
       <p>You are never graded on agreeing with Fried. You are asked to represent him accurately, use the physics correctly, and say what further evidence would settle a question.</p>
-      <p class="small">Prerequisites: forces, energy, waves, derivatives and integrals. Quantum ideas are introduced from scratch. Your notes are kept only in this browser.</p>
+      <p class="small">No calculus is required for the beginner explanations. Short guides introduce the physics and notation before each activity; the original mathematical detail remains available. Your notes are kept only in this browser.</p>
     </div>
   </div>
 
@@ -19,7 +19,7 @@ L.add({
     <div class="two">
       ${L.claim('est','Results of physics or logic that are tested and agreed, such as the uncertainty principle or Gödel\'s theorem.')}
       ${L.claim('interp','A reading of established results that others dispute, such as the Copenhagen view of measurement.')}
-      ${L.claim('prop','An idea new to Fried\'s book, such as multistate stabilization. He flags these himself: “Much of what follows, however, is new” (p. 288).')}
+      ${L.claim('prop','An additional proposal in Fried\'s book, such as multistate stabilization. He flags these himself: “Much of what follows, however, is new” (p. 288).')}
       ${L.claim('open','A question nobody has settled. Each one says what kind of gap it is: a missing definition, missing evidence, or a disagreement about interpretation.')}
     </div>
   </div>
@@ -60,7 +60,7 @@ L.add({
     </div>
 
     <div class="case"><h3>Fried's case</h3>
-      ${L.claim('est','One flat drawing supports two different three-dimensional percepts, and they alternate. The drawing itself does not change.')}
+      ${L.claim('est','One flat drawing can support two different three-dimensional percepts; some viewers experience alternation. The drawing itself does not change.')}
       ${L.claim('interp','Before Rachel opens her eyes, the drawing is neither “left” nor “right”; those properties “do not exist until she opens her eyes” (p. 237). Her perception brings meaning, the third dimension, to a flat drawing, and that meaning is what he says “is missing from quantum theory” (p. 238).')}
       ${L.claim('prop','A proton being measured is like Rachel opening her eyes: from the context, it creates a representation, a symbol, and “chooses” its position. Hence his equation PHYSICAL = MATERIAL + MENTAL (p. 240).')}
     </div>

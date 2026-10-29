@@ -8,11 +8,11 @@ L.add({
   lede:`In Part IV Fried turns to quantum physics because it offers what mechanism lacks: genuine irreducibility. Measured values are not hidden facts waiting to be read. Before taking his interpretation, you need the physics itself, so this unit builds it from two experiments.`,
   html(){ return `
   <div class="case"><h3>Fried's case</h3>
-    ${L.claim('est','Prepare a “tiny Newton” with exactly known velocity and its measured position scatters, “from the next county” to the Moon; pin down the position and the velocity scatters instead (pp. 207–213). This is the uncertainty principle, and no better instrument removes it.')}
+    ${L.claim('est','Prepare a “tiny Newton” with a very narrow velocity distribution and its measured position scatters, “from the next county” to the Moon; pin down the position and the velocity scatters instead (pp. 207–213). This is the uncertainty principle, and no better instrument removes it.')}
     ${L.quote('Uncertainty, therefore, is woven into the very fabric of reality.', '213')}
     ${L.claim('interp','In the minimal Copenhagen reading Fried prefers, asked how the particle came to be where it was found, physics answers that “there is no cause” (p. 217). Before measurement it lacks even “position-ness” (p. 279). Rival readings, many-worlds and hidden variables, try to restore determinism; Fried reads them as Newton\'s instincts returning (pp. 224–226).')}
-    ${L.claim('est','In Fried\'s notation, an atom prepared as <span class="mono">(0) + (2)</span> evolves by the quantum law Q into <span class="mono">(4) + (6)</span>, keeping both possibilities; measurement M then actualizes one, <span class="mono">[4]</span>, and the other disappears (pp. 266–270).')}
-    ${L.claim('interp','Q never changes how many possibilities there are; M always does. Since measurement is itself a physical process, a theory whose only law of motion is Q cannot describe everything. Hence “quantum theory is wrong” (p. 272), which Fried makes precise as “incomplete” (p. 288). This is the measurement problem, and many physicists accept it is unsolved.')}
+    ${L.claim('interp','In Fried\'s notation, an atom prepared as <span class="mono">(0) + (2)</span> evolves by the quantum law Q into <span class="mono">(4) + (6)</span>, keeping both possibilities; measurement M then actualizes one, <span class="mono">[4]</span>, and the other disappears (pp. 266–270).')}
+    ${L.claim('interp','In Fried’s simplified account, Q preserves multistate character while M actualizes an outcome. Since measurement is itself a physical process, a theory whose only law of motion is Q cannot describe everything. Hence “quantum theory is wrong” (p. 272), which Fried makes precise as “incomplete” (p. 288). This is the measurement problem, and many physicists accept it is unsolved.')}
   </div>
 
   <div class="section">
@@ -44,19 +44,19 @@ L.add({
         <div class="row"><button class="btn primary" type="button" id="send">Send 200 photons</button><button class="btn" type="button" id="clearMz">Clear counts</button></div>
         <div id="mzCounts" class="small" aria-live="polite">No photons sent yet at these settings.</div>
       </div>
-      <div class="model-note">Ideal, lossless splitters and detectors, one photon at a time. P(D₀) = ½(1 + V cos φ), with fringe visibility V = √(1 − D²) for a pure marker state. Sampled counts are simulated. A marked photon behaves as a 50:50 mixture whatever the phase.</div>
+      <div class="model-note">Ideal, lossless splitters and detectors, one photon at a time. P(D₀) = ½(1 + V cos φ), with fringe visibility V = √(1 − D²) for a pure marker state. Sampled counts are simulated. A perfectly path-marked photon (D = 1) gives 50:50 output probabilities whatever the phase. Partial marking reduces visibility gradually.</div>
     </div>
   </div>
 
   <div class="case"><h3>Probe</h3>
-    ${L.claim('est','With D = 0 and φ = 0, every photon reaches D₀: the two paths interfere. A mixture of photons that each took one definite path would give 50:50. So the photon was not secretly on one path; that is what “superposition” means operationally.')}
+    ${L.claim('est','With D = 0 and φ = 0, every photon reaches D₀: the two paths interfere. A mixture of photons that each took one definite path would give 50:50. This rules out a simple one-path mixture in this apparatus. It does not rule out every theory with definite trajectories: Bohmian mechanics also includes a guiding wave.')}
     ${L.claim('est','Interference fades as soon as the marker records the path, whether or not anyone reads the record. No conscious observer is needed.')}
     ${L.claim('prop','In quantum linguistics, the photon or electron becomes “aware” of its measurement context and “chooses” its value, as Rachel chooses an orientation for the cube (pp. 237–238, 305–308). The randomness we see is the outward trace of that choice.')}
-    ${L.claim('open','<b>Kind of gap: interpretation.</b> The predictions above are the same in every interpretation. Copenhagen, many-worlds, Bohmian mechanics, collapse models and Fried\'s reading differ on what happens, not on these numbers. What would distinguish Fried\'s reading? Unit 7 asks.')}
+    ${L.claim('open','<b>Kind of gap: interpretation.</b> Copenhagen, many-worlds, and Bohmian mechanics agree on these ideal standard predictions. Collapse models modify dynamics and can predict deviations; Fried\'s reading also needs to specify whether and when its predictions depart from the standard model. What would distinguish Fried\'s reading? Unit 7 asks.')}
   </div>
 
   ${L.check('q1','Set D = 0 and φ = 0. Every photon arrives at D₀. What does that rule out?',[
-    {t:'That each photon secretly took one path, with 50:50 odds.', ok:true, fb:' A one-path photon meets the second splitter alone and goes either way with probability ½. Only both paths together can send every photon to D₀.'},
+    {t:'A simple incoherent 50:50 mixture of paths, with no guiding interference contribution.', ok:true, fb:' A one-path photon meets the second splitter alone and goes either way with probability ½. The coherent state includes interference between path contributions. This does not by itself exclude hidden-trajectory interpretations with a guiding wave.'},
     {t:'That photons are particles at all.', ok:false, fb:' Each photon still arrives whole, at one detector. The pattern is in the statistics, not in split photons.'},
     {t:'Nothing; detectors simply prefer D₀.', ok:false, fb:' Change φ to 180° and every photon goes to D₁. The preference follows the phase, which only matters if both paths contribute.'}
   ],{reason:true})}

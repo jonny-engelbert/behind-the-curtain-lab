@@ -57,7 +57,7 @@ L.add({
 
   <div class="case"><h3>Probe</h3>
     ${L.claim('est','In the logistic map, ordered windows appear inside the chaotic region; the largest, a period-3 window, opens at r = 1 + √8 ≈ 3.828. Period-doubling routes to chaos also share universal numbers (Feigenbaum), which echoes Fried\'s interest in “universality” (pp. 134–137).')}
-    ${L.claim('est','Per Bak, whom Fried cites (pp. 138–140), describes self-organized criticality: systems such as sandpiles that keep complex structure indefinitely without being tuned.')}
+    ${L.claim('est','Per Bak, whom Fried cites (pp. 138–140), describes self-organized criticality: idealized driven systems such as sandpiles with sustained, scale-dependent avalanche activity under stated conditions. This is not a theorem about unlimited complexity.')}
     ${L.claim('open','<b>Kind of gap: definition and proof.</b> One model\'s route to chaos does not establish a universal ceiling on classical organization. What exactly is the ceiling, which systems does it apply to, and what result establishes it? Fried\'s stabilization (Unit 7) is offered as the way past it, so the premise matters.')}
   </div>
 

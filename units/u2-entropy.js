@@ -8,7 +8,7 @@ L.add({
   lede:`If everything slides toward equilibrium, why is the universe not a uniform “pea soup” (p. 104)? Fried's answer, taken from Prigogine, is that an open system sitting between a hot and a cold region can lower its own entropy as long as the total still rises. This unit builds that bookkeeping from the ground up.`,
   html(){ return `
   <div class="case"><h3>Fried's case</h3>
-    ${L.claim('est','Entropy counts the microscopic arrangements compatible with what we see: few for a solid, more for a liquid, most for a gas. Heat Q leaving a body at temperature T changes its entropy by Q/T, and for any isolated process the total entropy never falls: ΔS<sub>total</sub> ≥ 0.')}
+    ${L.claim('est','For an equal-probability model, entropy is S = k ln W, where W counts microscopic arrangements compatible with a macrostate. A reservoir at fixed temperature T loses entropy Q/T when positive heat Q leaves it (so its change is −Q/T), and for any isolated process the total entropy never falls: ΔS<sub>total</sub> ≥ 0.')}
     ${L.claim('interp','The second law seems to forbid stars, planets, life and society, which all grow more ordered. Prigogine resolved this by shifting attention from the gradient to the system sitting inside it.')}
     ${L.quote('So, YES, it is possible for the system to exhibit a decrease in entropy!', '114')}
     ${L.claim('interp','Fried counts this as one of mechanism\'s great successes, and it is what drives the cascade of patterns in Unit 1. In Part VI he borrows the same bookkeeping for meaning: a “symbolic entropy” and a “symbolic second law” (pp. 377–378, Unit 8).')}
@@ -40,7 +40,7 @@ L.add({
         ${L.slider('dS','System entropy change ΔS_sys (J/K per second)',-3,3,0.01,-0.5)}
         <button class="btn" type="button" id="frExample">Load Fried's numbers (p. 113)</button>
       </div>
-      <div class="model-note">Steady flow, reservoirs large enough that their temperatures stay fixed. Allowed means ΔS<sub>total</sub> = ΔS<sub>env</sub> + ΔS<sub>sys</sub> ≥ 0. Fried's worked example uses round numbers: the surroundings gain +5, so a system change of −3 leaves +2 (pp. 110–113).</div>
+      <div class="model-note">Quasi-steady heat throughput, reservoirs large enough that their temperatures stay fixed. Allowed means ΔS<sub>total</sub> = ΔS<sub>env</sub> + ΔS<sub>sys</sub> ≥ 0. Fried's worked example uses round numbers: the surroundings gain +5, so a system change of −3 leaves +2 (pp. 110–113).</div>
     </div>
   </div>
 
@@ -88,12 +88,12 @@ L.add({
         ctx.fillStyle = c.ink; ctx.textAlign = 'center'; ctx.font = `12px ${c.font}`; ctx.fillText(v[0], (x0+x1)/2, H - 12); ctx.fillText((v[1]>=0?'+':'') + v[1].toFixed(2), (x0+x1)/2, v[1] >= 0 ? y1 - 6 : y1 + 14); });
       ctx.strokeStyle = c.muted; ctx.beginPath(); ctx.moveTo(a.m.l, a.Y(0)); ctx.lineTo(W - a.m.r, a.Y(0)); ctx.stroke();
       const v = root.querySelector('#verdict');
-      if (!override && Tc >= Th){ v.innerHTML = '<b>Check the temperatures.</b> Heat flows on its own only from hot to cold, so keep T hot above T cold. With these settings the surroundings would lose entropy, which the second law forbids.'; return; }
+      if (!override && Tc >= Th){ v.innerHTML = '<b>Check the temperatures.</b> Heat flows on its own only from hot to cold, so keep T hot above T cold. For this passive hot-to-cold scenario, these temperatures do not match the assumed direction. Equal temperatures give zero reservoir entropy change; reversed flow would require a different physical process, such as a powered heat pump.'; return; }
       v.innerHTML = tot >= 0 ? `<b>Allowed.</b> The system's entropy ${sys < 0 ? 'falls by ' + Math.abs(sys).toFixed(2) + ', but the surroundings gain more' : 'rises too'}. Total change: +${tot.toFixed(2)} J/K per second.${sys < 0 ? ' This is local order paid for by the flow.' : ''}`
         : `<b>Forbidden.</b> The system would lose more entropy than the flow supplies to the surroundings (ΔS<sub>total</sub> = ${tot.toFixed(2)}). The largest allowed decrease is ${env.toFixed(2)} J/K per second.`;
     });
     const upd = () => { override = null; budget(); };
-    L.bindSlider(root,'Q',v=>v.toFixed(0)+' J',v=>{Q=v; upd();});
+    L.bindSlider(root,'Q',v=>v.toFixed(0)+' J/s',v=>{Q=v; upd();});
     L.bindSlider(root,'Th',v=>v.toFixed(0)+' K',v=>{Th=v; upd();});
     L.bindSlider(root,'Tc',v=>v.toFixed(0)+' K',v=>{Tc=v; upd();});
     L.bindSlider(root,'dS',v=>v.toFixed(2),v=>{dS=v; upd();});
