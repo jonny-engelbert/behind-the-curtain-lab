@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Behind the Curtain Lab</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Explore H. Michael Fried’s Behind the Curtain through guided physics labs, a book reading map, and questions that distinguish evidence from interpretation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -173,8 +173,10 @@ th{font-weight:600;font-size:.82rem;color:var(--muted)}
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 </style>
 <link rel="stylesheet" href="beginner.css">
+<link rel="stylesheet" href="companion.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <div class="shell">
   <aside class="rail" aria-label="Course map">
@@ -184,6 +186,8 @@ th{font-weight:600;font-size:.82rem;color:var(--muted)}
     </div>
     <nav class="mobile-map" id="mobileMap" aria-label="Units"></nav>
     <ol class="map" id="map"></ol>
+    <nav class="companion-nav" aria-label="Companion resources"><a href="#companion">Book guide &amp; five questions</a><a href="#synthesis">Your notebook</a></nav>
+    <p class="small" id="visitStatus" aria-live="polite"></p>
     <div class="legend" aria-label="Claim labels">
       <div>Every claim carries its status:</div>
       <div><span class="claim c-est">Established</span> tested physics or logic</div>
@@ -300,10 +304,12 @@ window.LAB = (function(){
   function markDone(id){ const d = get('done', {}); d[id] = true; set('done', d); renderMap(); }
   function renderMap(){
     const cur = location.hash.slice(1) || 'start', done = get('done', {});
-    document.getElementById('map').innerHTML = units.map(u =>
+    document.getElementById('map').innerHTML = units.filter(u => !u.resource).map(u =>
       `<li><a href="#${u.id}" ${u.id===cur?'aria-current="page"':''} class="${done[u.id]?'is-done':''}"><span class="n">${u.num}</span><span>${u.short}</span><span class="done" aria-label="${done[u.id]?'visited':''}"></span></a></li>`).join('');
-    document.getElementById('mobileMap').innerHTML = units.map(u =>
+    document.getElementById('mobileMap').innerHTML = units.filter(u => !u.resource).map(u =>
       `<a href="#${u.id}" ${u.id===cur?'aria-current="page"':''}>${u.num} ${u.short}</a>`).join('');
+    document.getElementById('visitStatus').textContent = `${units.filter(u => !u.resource && done[u.id]).length} of 10 units visited · dots record visits, not completion`;
+    document.querySelector('.companion-nav a').setAttribute('aria-current', cur === 'companion' ? 'page' : 'false');
     const a = document.querySelector('#mobileMap a[aria-current]'); a && a.scrollIntoView({block:'nearest', inline:'center'});
   }
   const _cleanup = [];
@@ -312,20 +318,21 @@ window.LAB = (function(){
     const id = location.hash.slice(1) || 'start';
     const i = Math.max(0, units.findIndex(u => u.id === id)); const u = units[i];
     const main = document.getElementById('main');
-    const prev = units[i-1], next = units[i+1];
-    main.innerHTML = `<header class="unit-head"><div class="meta"><span>${u.num === '0' ? 'Start here' : 'Unit '+u.num+' of '+(units.length-1)}</span><span>${u.minutes}</span>${u.pages?`<span>Book: ${u.pages}</span>`:''}</div>
+    const prev = u.resource ? null : units[i-1], next = !u.resource && units[i+1] && !units[i+1].resource ? units[i+1] : null;
+    main.innerHTML = `<header class="unit-head"><div class="meta"><span>${u.resource ? 'Book companion' : u.num === '0' ? 'Start here' : 'Unit '+u.num+' of 9'}</span><span>${u.minutes}</span>${u.pages?`<span>Book: ${u.pages}</span>`:''}</div>
       <h1>${u.title}</h1><p class="lede">${u.lede}</p></header>
-      <div class="stack" id="unitBody">${u.html()}</div>
+      <div class="stack" id="unitBody">${u.id === 'start' ? LAB.welcome() : ''}${u.html()}</div>
       <nav class="pager" aria-label="Unit navigation">${prev?`<a href="#${prev.id}"><small>← Previous</small>${prev.short}</a>`:''}${next?`<a class="next" href="#${next.id}"><small>Next →</small>${next.short}</a>`:''}</nav>`;
     const body = main.querySelector('#unitBody');
     wireChecks(body); wireNotes(body);
     u.mount && u.mount(body);
-    markDone(u.id);
+    if (!u.resource) { if (u.id !== 'start') set('last-unit', u.id); markDone(u.id); } else renderMap();
     document.title = (u.num==='0' ? '' : u.short + ' · ') + 'Behind the Curtain Lab';
     window.scrollTo(0,0);
   }
   window.addEventListener('hashchange', () => { route(); document.getElementById('main').focus({preventScroll:true}); });
   return { units, tag, claim, quote, slider, note, check, sorter, wireSorter, bindSlider, canvas, axes, rng, get, set, esc, route, renderMap, _cleanup,
+    notes(){ return Object.entries(store).filter(([k,v]) => k.startsWith('note:') && typeof v === 'string'); },
     add(u){ units.push(u); } };
 })();
 </script>
@@ -340,5 +347,6 @@ window.LAB = (function(){
 <script src="units/u8-meaning.js"></script>
 <script src="units/u9-synthesis.js"></script>
 <script src="beginner.js"></script>
+<script src="companion.js"></script>
 <script>LAB.route();</script>
 </body></html>

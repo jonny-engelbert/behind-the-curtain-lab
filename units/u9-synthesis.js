@@ -15,7 +15,7 @@ const STEPS = [
 const PREMISES = [
   ['p1','Symmetry breaking cannot give atoms relational identities, so mechanism cannot produce functional differentiation.','Plausible as a point about what symmetry breaking does. The contested step is whether relational roles need new laws, or arise from constraints, boundary conditions and history under the same laws (Unit 3).'],
   ['p2','Machines are the meta-scientific equivalent of Gödel sentences.','A structural parallel. It sharpens the question of origin, but carrying a theorem about formal systems over to physical ones is the most contested link (Unit 4).'],
-  ['p3','Quantum theory as formulated cannot be a universal theory.','Well supported as a statement of the measurement problem, which many physicists accept is open (Units 5 and 7).'],
+  ['p3','Quantum theory as formulated cannot be a universal theory.','The measurement problem motivates this claim, but an open interpretive problem does not establish that quantum theory must fail as a universal theory. Interpretations and modified dynamics offer different responses (Units 5 and 7).'],
   ['p4','Classical pattern-forming systems hit a ceiling at chaos.','Needs an argument. Model systems show order returning inside chaos, and self-organized criticality sustains complexity (Unit 1).'],
   ['p5','Physical systems have a mental dimension.','A coherent philosophical position with a long history (Leibniz, Whitehead, modern panpsychism). It is not currently testable, and Fried says so (Units 0, 5, 8).'],
   ['p6','Multistate stabilization explains how organization and life arise.','The book\'s most original physical idea. It needs a definition of multistate character, conditions for stabilization, and a prediction (Unit 7).']
@@ -53,8 +53,8 @@ L.add({
 
   <div class="section">
     <div class="kicker">4 · Your notebook</div>
-    <div class="prose"><p>Everything you have written is collected here. It is stored only in this browser, so copy it somewhere safe.</p></div>
-    <div class="row"><button class="btn primary" type="button" id="copyNb">Copy my notebook</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+    <div class="prose"><p>Everything you have written is collected here. It is stored only in this browser, so download a copy to keep. Downloads include written answers and premise ratings; they do not back up every lab setting.</p></div>
+    <div class="row"><button class="btn primary" type="button" id="copyNb">Copy my notebook</button><button class="btn" type="button" id="downloadNb">Download my notebook</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
     <textarea id="nbAll" readonly style="min-height:220px" aria-label="All notebook entries"></textarea>
   </div>
 
@@ -93,11 +93,16 @@ L.add({
     function compile(){ const parts = [];
       const notes = [['start-1','Rachel\'s cube'],['mech-1','The chaos ceiling'],['ent-1','Symbolic entropy, first thoughts'],['fn-1','What mechanism cannot answer'],['god-1','Machines as Gödel sentences'],['q-1','Created or revealed?'],['w-1','One object or two?'],['ladder-spec','A specification for stabilization'],['mn-field','Field notebook'],['tr-thermo','Transfer: thermostat'],['tr-cell','Transfer: cell'],['tr-robot','Transfer: learning robot']];
       notes.forEach(([k,t]) => { const v = L.get('note:'+k,''); if (v.trim()) parts.push(`## ${t}\n${v.trim()}`); });
+      (L.discussionQuestions || []).forEach(q => { const v = L.get('note:discussion-'+q.id, ''); if (v.trim()) parts.push(`## Discussion: ${q.title}\n${v.trim()}`); });
       PREMISES.forEach(p => { const r = ratings[p[0]], v = L.get('note:pr-'+p[0],''); if (r || v.trim()) parts.push(`## Premise: ${p[1]}\nRating: ${r || '—'}\n${v.trim()}`); });
+      const included = new Set([...notes.map(([k]) => k), ...PREMISES.map(p => 'pr-'+p[0]), ...(L.discussionQuestions || []).map(q => 'discussion-'+q.id)]);
+      L.notes().forEach(([k,v]) => { const id = k.slice(5); if (!included.has(id) && v.trim()) parts.push(`## Additional note: ${id}\n${v.trim()}`); });
       Object.keys(L.get('checks',{})).length && parts.push(`## Checks answered\n${Object.keys(L.get('checks',{})).length} questions`);
       return parts.length ? `Behind the Curtain Lab · my notebook\n\n` + parts.join('\n\n') : 'Your notebook is empty so far. Notes you write in any unit appear here.'; }
     const all = root.querySelector('#nbAll'); all.value = compile();
     root.addEventListener('input', () => { all.value = compile(); });
+    root.querySelector('#downloadNb').addEventListener('click', () => L.downloadNotebook(compile()));
+    root.querySelectorAll('[data-pr]').forEach(b => b.addEventListener('click', () => { all.value = compile(); }));
     root.querySelector('#copyNb').addEventListener('click', () => { const txt = compile(); all.value = txt;
       const done = m => root.querySelector('#copyMsg').textContent = m;
       try { navigator.clipboard.writeText(txt).then(() => done('Copied.'), () => { all.select(); done('Selected: press Ctrl+C or ⌘C to copy.'); }); }

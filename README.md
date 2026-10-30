@@ -37,3 +37,11 @@ This iteration also clarifies partial path marking, the limits of one-path-mixtu
 Teaching references: [IES practice guide](https://ies.ed.gov/ncee/wwc/PracticeGuide/1), [PhET teaching guidance](https://phet.colorado.edu/en/teaching-resources/teaching-with-phet). Physics references: [IBM quantum interference material](https://quantum.cloud.ibm.com/learning/en/modules/quantum-mechanics/superposition-with-qiskit), [Bassi and Ghirardi on collapse models](https://arxiv.org/abs/quant-ph/0302164), [Zurek on decoherence](https://arxiv.org/abs/quant-ph/0105127).
 
 No learner trial has yet established the effectiveness of this reading layer.
+
+## Book companion improvements
+
+The home page now offers a short opening activity, a reading guide and a direct route to the central proposal. The companion guide maps all six Parts using printed page numbers and adapts the supplied assessment’s five questions into saved discussion prompts. Comparisons distinguish adaptation from life’s origin, and measurement history from departures from quantum theory. A suggested living/inert comparison is labeled as a research question rather than a derived prediction.
+
+Notebook downloads include discussion answers and premise ratings. They are readable text exports, not restorable backups. Notes remain local to the website origin; a localhost preview cannot access notes on GitHub Pages. Navigation dots count visits, not completion.
+
+`companion.js` adds the resource page and entry paths; `companion.css` adds responsive and print styling. No book PDF or private assessment is included in the published assets.

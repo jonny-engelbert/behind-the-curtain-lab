@@ -91,7 +91,7 @@ L.add({
     root.querySelectorAll('[data-rep]').forEach(b => b.addEventListener('click', () => { log[cond][b.dataset.rep]++; L.set('cube', log); render(); }));
     root.querySelector('#cubeClear').addEventListener('click', () => { ['neutral','cue'].forEach(k => log[k] = {L:0,U:0,F:0,N:0}); L.set('cube', log); render(); });
     drawShade(); render();
-    root.querySelector('#courseCards').innerHTML = L.units.filter(u => u.num !== '0').map(u =>
+    root.querySelector('#courseCards').innerHTML = L.units.filter(u => u.num !== '0' && !u.resource).map(u =>
       `<a class="unit-card" href="#${u.id}"><span class="n">Unit ${u.num} · ${u.minutes}</span><h3>${u.title}</h3><p>${u.card}</p></a>`).join('');
   }
 });

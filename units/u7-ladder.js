@@ -77,7 +77,7 @@ L.add({
     ${L.claim('est','The measurement problem is real and unsolved; physicists disagree about whether it needs new dynamics (collapse models), new ontology (Bohm, many-worlds) or only interpretation.')}
     ${L.claim('open','<b>Kind of gap: definition.</b> “Multistate character” needs an operational meaning. Is it coherence, entanglement, or something new? Without that, suppression and stabilization cannot be measured.')}
     ${L.claim('open','<b>Kind of gap: premise.</b> Stabilization is offered as the escape from the chaos ceiling. Unit 1 showed that the ceiling itself needs an argument.')}
-    ${L.claim('open','<b>Kind of gap: evidence.</b> The natural prediction is that organized living matter keeps more multistate character than inert matter of the same size. Quantum biology has found some real effects (bird navigation is a leading candidate), but quantum coherence in warm, wet cells usually decays very fast.')}
+    ${L.claim('open','<b>Kind of gap: evidence.</b> One possible research question is whether organized living matter sustains a specified quantum signature differently from a suitable inert comparison. This is not a quantitative prediction derived in the book. It requires an observable, matched preparations and environmental controls, and a baseline from standard quantum dynamics. Quantum effects in biology alone would not establish stabilization.')}
   </div>
 
   ${L.check('l1','Why does suppression alone leave Fried dissatisfied?',[
