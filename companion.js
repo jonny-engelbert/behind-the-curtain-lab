@@ -44,7 +44,7 @@
     ['III','Reason','141–192','Function, machines and the Gödel analogy',[['function','Motion and function'],['godel','Limits of proof']]],
     ['IV','Organism','193–255','Quantum properties, interpretation and non-separability',[['quantum','Possibility and measurement'],['wholes','The CHSH game']]],
     ['V','Evolution','256–337','Fried’s proposed route to organized systems',[['ladder','Suppression and stabilization'],['quantum','The measurement problem']]],
-    ['VI','Meaning','338–389','Symbolic evolution, reproduction and self',[['meaning','Meaning, life and self'],['synthesis','Rebuild and evaluate']]]
+    ['VI','Language','338–386','Symbolic evolution, reproduction and self',[['meaning','Meaning, life and self'],['synthesis','Rebuild and evaluate']]]
   ];
   L.add({id:'companion', num:'Guide', resource:true, short:'Book guide & five questions', minutes:'Read at your own pace', pages:'printed page numbers',
     title:'Read the book. Follow the argument. Ask what would settle it.',
